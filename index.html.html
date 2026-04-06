@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOMA 4 Anos · 23 de Maio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F4EE;
+    --sand: #EDE9DF;
+    --warm-gray: #C8C0B0;
+    --stone: #8C8070;
+    --earth: #5C5040;
+    --deep: #2C2418;
+    --sage: #7A8C6E;
+    --sage-light: #B8C8A8;
+    --sage-pale: #EAF0E4;
+    --accent: #9B6B4A;
+    --accent-light: #E8D5C4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px 48px;
+    position: relative;
+    background: var(--deep);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(122,140,110,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(155,107,74,0.12) 0%, transparent 55%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 18vw, 120px);
+    font-weight: 300;
+    line-height: 0.9;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s ease forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--sage-light);
+  }
+
+  .hero-anos {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 4vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--warm-gray);
+    letter-spacing: 0.08em;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.55s ease forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.7s ease forwards;
+  }
+
+  .hero-meta-item {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-meta-item::before {
+    content: '';
+    width: 20px;
+    height: 0.5px;
+    background: var(--sage-light);
+    opacity: 0.6;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s ease forwards;
+  }
+
+  .scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .scroll-line {
+    width: 0.5px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--stone), transparent);
+    animation: scrollPulse 2s 1.5s ease-in-out infinite;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 72px 24px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--warm-gray);
+    opacity: 0.5;
+  }
+
+  /* PROPOSTA */
+  .proposta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 5vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--earth);
+    margin-bottom: 20px;
+  }
+
+  .proposta-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  /* INCLUSO */
+  .incluso-bg {
+    background: var(--sand);
+  }
+
+  .incluso-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .incluso-card {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 20px 16px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .incluso-card.visible { opacity: 1; transform: none; }
+
+  .incluso-card:nth-child(2) { transition-delay: 0.08s; }
+  .incluso-card:nth-child(3) { transition-delay: 0.16s; }
+  .incluso-card:nth-child(4) { transition-delay: 0.24s; }
+
+  .incluso-icon {
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .incluso-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--earth);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+
+  .incluso-desc {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.5;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .tl-item.visible { opacity: 1; transform: none; }
+  .tl-item:nth-child(2) { transition-delay: 0.1s; }
+  .tl-item:nth-child(3) { transition-delay: 0.2s; }
+  .tl-item:nth-child(4) { transition-delay: 0.3s; }
+  .tl-item:nth-child(5) { transition-delay: 0.4s; }
+
+  .tl-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 52px;
+    padding-top: 2px;
+  }
+
+  .tl-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--sage);
+    white-space: nowrap;
+  }
+
+  .tl-connector {
+    width: 0.5px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--sage-light), var(--sand));
+    margin: 6px 0;
+  }
+
+  .tl-item:last-child .tl-connector { display: none; }
+
+  .tl-body {
+    padding: 0 0 28px;
+  }
+
+  .tl-label {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--deep);
+    line-height: 1.4;
+  }
+
+  .tl-sub {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--stone);
+    margin-top: 2px;
+  }
+
+  /* LOTES */
+  .lotes-bg {
+    background: var(--deep);
+  }
+
+  .lotes-bg .section-label {
+    color: var(--sage-light);
+  }
+
+  .lotes-bg .section-label::after {
+    background: var(--stone);
+  }
+
+  .lote {
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .lote.visible { opacity: 1; transform: none; }
+  .lote:nth-child(2) { transition-delay: 0.1s; }
+  .lote:nth-child(3) { transition-delay: 0.2s; }
+  .lote:nth-child(4) { transition-delay: 0.3s; }
+
+  .lote.destaque {
+    border-color: var(--sage-light);
+    background: rgba(122,140,110,0.08);
+  }
+
+  .lote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .lote-titulo {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+
+  .lote-periodo {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    margin-top: 3px;
+  }
+
+  .lote-badge {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    background: rgba(184,200,168,0.15);
+    border: 0.5px solid rgba(184,200,168,0.3);
+    border-radius: 20px;
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+
+  .lote-precos {
+    display: flex;
+    gap: 24px;
+  }
+
+  .lote-preco-label {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .lote-preco-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1;
+  }
+
+  .lote-divider {
+    width: 0.5px;
+    background: rgba(255,255,255,0.1);
+    align-self: stretch;
+  }
+
+  .vaga-social {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    border: 0.5px solid rgba(255,255,255,0.08);
+  }
+
+  .vaga-social p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.55;
+  }
+
+  .vaga-social strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 72px 24px 80px;
+    background: var(--sand);
+  }
+
+  .cta-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 8vw, 42px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--deep);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--stone);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--deep);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 100px;
+    transition: background 0.25s ease, transform 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    background: var(--earth);
+    transform: translateY(-1px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep);
+    text-align: center;
+    padding: 32px 24px;
+  }
+
+  footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  footer span {
+    color: var(--sage-light);
+  }
+
+  /* DIVIDER */
+  .organic-divider {
+    width: 100%;
+    height: 40px;
+    background: var(--sand);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .organic-divider-inv {
+    width: 100%;
+    height: 40px;
+    background: var(--deep);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50%       { opacity: 0.8; transform: scaleY(1.1); }
+  }
+
+  @media (max-width: 400px) {
+    .incluso-grid { grid-template-columns: 1fr; }
+    .lote-precos { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Espaço SOMA · Nova Friburgo</div>
+  <div class="hero-title">SOMA<br><em>4 anos</em></div>
+  <div class="hero-anos">um encontro para celebrar</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">23 de maio de 2025</div>
+    <div class="hero-meta-item">8h30 às 14h</div>
+    <div class="hero-meta-item">Trilhas do Araçari</div>
+  </div>
+  <div class="scroll-hint">
+    <span>explorar</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PROPOSTA -->
+<section class="section">
+  <div class="section-label">sobre o encontro</div>
+  <p class="proposta-text">
+    Uma manhã dedicada a nutrir o corpo, a alma e o coração.
+  </p>
+  <p class="proposta-sub">
+    Através da prática, das pausas, das propostas e das trocas que nos atravessam. Um encontro para desacelerar e estar. Para sentir o que já foi vivido e abrir espaço para o que ainda se forma.<br><br>
+    Celebramos 4 anos de SOMA — um caminho construído em movimento, presença e reinvenção. Em um lugar que amamos profundamente, e que, de alguma forma, também se tornou casa. ♡
+  </p>
+</section>
+
+<!-- INCLUSO -->
+<div style="background: var(--sand); padding: 0 0 72px;">
+  <div class="section" style="padding-top: 64px; padding-bottom: 0;">
+    <div class="section-label">o que está incluso</div>
+    <div class="incluso-grid">
+      <div class="incluso-card">
+        <span class="incluso-icon">🍵</span>
+        <div class="incluso-title">Recepção com bolinho e chá</div>
+        <div class="incluso-desc">Uma chegada acolhedora para começar o dia com calma</div>
+      </div>
+      <div class="incluso-card">
+        <span class="incluso-icon">🧘</span>
+        <div class="incluso-title">Todas as atividades</div>
+        <div class="incluso-desc">Yoga, automassagem, pintura livre e momentos de presença</div>
+      </div>
+      <div class="incluso-card">
+        <span class="incluso-icon">🌿</span>
+        <div class="incluso-title">Almoço com sobremesa</div>
+        <div class="incluso-desc">Cardápio exclusivo do melhor restaurante vegetariano da cidade</div>
+      </div>
+      <div class="incluso-card">
+        <span class="incluso-icon">🎁</span>
+        <div class="incluso-title">Brinde exclusivo do evento</div>
+        <div class="incluso-desc">Uma lembrança especial para celebrar esse momento junto</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMAÇÃO -->
+<section class="section">
+  <div class="section-label">programação</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">8h30</div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-label">Recepção</div>
+        <div class="tl-sub">Bolinho, chá e chegada acolhedora</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">9h</div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-label">Reconhecimento & teoria</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">9h30</div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-label">Yoga e automassagem</div>
+        <div class="tl-sub">até 11h</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">11h</div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-label">Pintura livre</div>
+        <div class="tl-sub">até 12h</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-time">12h</div>
+        <div class="tl-connector"></div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-label">Almoço + tempo livre e sorteios</div>
+        <div class="tl-sub">até 14h</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRIÇÕES -->
+<div style="background: var(--deep); padding: 72px 0;">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="section-label" style="color: var(--sage-light);">inscrições</div>
+
+    <div class="lote destaque">
+      <div class="lote-header">
+        <div>
+          <div class="lote-titulo">Alunos SOMA</div>
+          <div class="lote-periodo">a partir de 06/04</div>
+        </div>
+        <div class="lote-badge">Comunidade</div>
+      </div>
+      <div class="lote-precos">
+        <div>
+          <div class="lote-preco-label">Pix</div>
+          <div class="lote-preco-valor">R$ 155</div>
+        </div>
+        <div class="lote-divider"></div>
+        <div>
+          <div class="lote-preco-label">Cartão</div>
+          <div class="lote-preco-valor">2x sem juros</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lote">
+      <div class="lote-header">
+        <div>
+          <div class="lote-titulo">Lista de interessados</div>
+          <div class="lote-periodo">inscrição até 15/04</div>
+        </div>
+        <div class="lote-badge">1º lote</div>
+      </div>
+      <div class="lote-precos">
+        <div>
+          <div class="lote-preco-label">Pix</div>
+          <div class="lote-preco-valor">R$ 165</div>
+        </div>
+        <div class="lote-divider"></div>
+        <div>
+          <div class="lote-preco-label">Cartão</div>
+          <div class="lote-preco-valor">2x R$ 83</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lote">
+      <div class="lote-header">
+        <div>
+          <div class="lote-titulo">Abertura das inscrições</div>
+          <div class="lote-periodo">19 a 26/04</div>
+        </div>
+        <div class="lote-badge">2º lote</div>
+      </div>
+      <div class="lote-precos">
+        <div>
+          <div class="lote-preco-label">Pix</div>
+          <div class="lote-preco-valor">R$ 170</div>
+        </div>
+        <div class="lote-divider"></div>
+        <div>
+          <div class="lote-preco-label">Cartão</div>
+          <div class="lote-preco-valor">2x R$ 88</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lote">
+      <div class="lote-header">
+        <div>
+          <div class="lote-titulo">Último lote</div>
+          <div class="lote-periodo">27/04 até 20/05</div>
+        </div>
+        <div class="lote-badge">3º lote</div>
+      </div>
+      <div class="lote-precos">
+        <div>
+          <div class="lote-preco-label">Pix</div>
+          <div class="lote-preco-valor">R$ 180</div>
+        </div>
+        <div class="lote-divider"></div>
+        <div>
+          <div class="lote-preco-label">Cartão</div>
+          <div class="lote-preco-valor">2x R$ 93</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vaga-social">
+      <p><strong>1 vaga social disponível</strong> — destinada a quem não pode arcar com os custos financeiros. Entre em contato.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-label">garanta sua vaga</div>
+  <div class="cta-title">Venha celebrar com a gente.</div>
+  <p class="cta-sub">Vagas limitadas. Quanto antes você se inscrever,<br>melhor o valor — e mais garantida a sua presença.</p>
+  <a href="#" class="cta-btn">Quero me inscrever</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>SOMA · 4 anos de movimento, presença e reinvenção<br>
+  <span>Nova Friburgo, RJ · 23 de maio de 2025</span></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.incluso-card, .tl-item, .lote').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
